@@ -1,29 +1,38 @@
+"""Class implementing a linked list."""
 import sys
 
 
 class Link:
+    """Class implementing a linked list."""
+
     def __init__(self, value, next=None):
+        """Initialise linked list."""
         self.value = value
         self.next = next
 
     def insert(self, link):
-        '''Insert a new link after the current one.'''
-
+        """Insert a new link after the current one."""
         link.next = self.next
         self.next = link
 
     def __iter__(self):
+        """Iterate through the linked list."""
         return LinkIterator(self)
 
 
 class LinkIterator:
+    """Implementation of the iterator protocol on class Link."""
+
     def __init__(self, link):
+        """Initialize yourself."""
         self.here = link
 
     def __iter__(self):
+        """Return yourself."""
         return self
 
     def __next__(self):
+        """Get the value of next item."""
         if self.here:
             next = self.here
             self.here = self.here.next
